@@ -1,0 +1,125 @@
+# Your snippets
+#
+# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
+# expand the prefix into a larger code block with templated values.
+#
+# You can create a new snippet in this file by typing "snip" and then hitting
+# tab.
+#
+# An example CoffeeScript snippet to expand log to console.log:
+#
+# '.source.coffee':
+#   'Console log':
+#     'prefix': 'log'
+#     'body': 'console.log $1'
+#
+# Each scope (e.g. '.source.coffee' above) can only be declared once.
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it in the
+# Atom Flight Manual:
+# https://atom.io/docs/latest/using-atom-basic-customization#cson
+'.source.apex':
+      'debug':
+            'prefix': 'debug'
+            'body': 'System.debug(\\\' ${1:SearchText} \\\' + ${2:variable} )'
+
+      'testSetupMethod':
+            'prefix': 'testSetupMethod'
+            'body': """
+            /***********
+            testSetup method creates the following:
+
+            ************/
+            @testSetup static void ${1:testSetupMethodName}(){
+
+            // Write your test setup code to create test records once
+            // and then access them in any test method in the test class
+
+            }
+            """
+      'getRecordType':
+            'prefix': 'queryRecordType'
+            'body':   'ID ${1:variableName} = Schema.SObjectType.${2:sObjectName}.getRecordTypeInfosByName().get(\\\'${3:recordtypeName}\\\').getRecordTypeId();'
+      'createTestUser':
+            'prefix': 'createTestUser'
+            'body': """
+            /***********
+            createTestUser creates a test user for test class, use this in your test setup method:
+
+            ************/
+            //Create user
+            Profile ${1:profileVariableName} = [SELECT Id FROM Profile WHERE Name = \\\'${2:profileName}\\\' Limit 1];
+            User ${3:userVariableName} = new User(
+            			  Username = System.now().millisecond() + \\\'test12345@test.com\\\',
+            			  ProfileId = ${1:profileVariableName}.Id,
+            			  Alias = \\\'test123\\\',
+            			  Email = \\\'test12345@test.com\\\',
+            			  EmailEncodingKey = \\\'UTF-8\\\',
+            			  LastName = \\\'TestLastName\\\',
+            			  CommunityNickname = \\\'test12345\\\',
+            			  TimeZoneSidKey = \\\'America/Los_Angeles\\\',
+            			  LocaleSidKey = \\\'en_US\\\',
+            			  LanguageLocaleKey = \\\'en_US\\\'
+            			  );
+            Database.insert(${3:userVariableName});
+            """
+      'multiline':
+            'prefix': 'multiline'
+            'body': """
+            /***********
+            ${1:enterMultiLineComment}
+            ************/
+            """
+      'classHeader':
+            'prefix': 'classHeader'
+            'body': """
+            /*************************************************************************************
+            Name                    ${1:what}
+            Developed By            ${2:who}
+            Purpose                 ${3:why}
+            Created date            ${4:when}
+            *************************************************************************************/
+            """
+      'new list':
+        'prefix': 'newl'
+        'body': 'List<${1:listType}> ${2:variableName} = new List<${1:listType}>();'
+      'new set':
+        'prefix': 'news'
+        'body': 'Set<${1:setType}> ${2:variableName} = new Set<${1:setType}>();'
+      'new map':
+        'prefix': 'newm'
+        'body': 'Map<${1:mapKeyType}, ${2:mapValueType}> ${3:variableName} = new Map<${1:mapKeyType}, ${2:mapValueType}>();'
+      'assert equal':
+        'prefix': 'asse'
+        'body': 'System.assertEquals(${1:expected}, ${2:actual});'
+      'assert not equal':
+        'prefix': 'assne'
+        'body': 'System.assertNotEquals(${1:expected}, ${2:actual});'
+      'for':
+        'prefix': 'for'
+        'body': """
+        for(Integer i = 0; i < ${1:sObjectList}.size(); i++){
+             ${1:sObjectList}[i]
+        }
+        """
+      'foreach':
+        'prefix': 'fore'
+        'body': """
+        for(${1:SObject} ${2:obj} : ${3:sObjList}){
+             $4
+        }
+        """
+      'add apex message':
+        'prefix': 'addm'
+        'body': 'ApexPages.addMessage(new ApexPages.message(ApexPages.Severity.${1:ERROR}, \\\'${2:message}\\\'));'
+       'runAs':
+         'prefix': 'runAs'
+         'body': """
+         /*** Running the next piece of code with the
+              running user as - $1
+          ***/
+         System.runAs($1){
+
+         }
+         """

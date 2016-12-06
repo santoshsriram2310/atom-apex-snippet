@@ -1,0 +1,20 @@
+{
+  "name": "atom-snippets",
+  "main": "./lib/atom-snippets",
+  "version": "0.0.0",
+  "description": "A set of Apex snippets for SalesForce that follow best practice.",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/santoshsriram2310/atom-apex-snippet"
+  },
+  "bugs": {
+    "url": "https://github.com/santoshsriram2310/atom-apex-snippet/issues"
+  },
+  "readmeFilename": "README.md",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {}
+}
