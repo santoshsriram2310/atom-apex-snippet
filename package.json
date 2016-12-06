@@ -1,7 +1,7 @@
 {
   "name": "atom-snippets",
   "main": "./lib/atom-snippets",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A set of Apex snippets for SalesForce that follow best practice.",
   "keywords": [],
   "repository": {
